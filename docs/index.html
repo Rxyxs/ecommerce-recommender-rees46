@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-commerce Recommender on 85 Million Real Events</title>
+<meta name="description" content="A two-stage recommender (candidate generation, then a learning-to-rank model) trained and evaluated offline on two months of real clickstream from a multi-category online store. Fo">
+<style>
+  :root { --bg:#FBFAF8; --surface:#FFF; --ink:#23201D; --muted:#6B645D; --line:#E3DED7; --accent:#B5553D; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg:#171614; --surface:#201E1B; --ink:#EDE9E3; --muted:#A9A29A; --line:#322E2A; --accent:#D9765C; } }
+  :root[data-theme="dark"] { --bg:#171614; --surface:#201E1B; --ink:#EDE9E3; --muted:#A9A29A; --line:#322E2A; --accent:#D9765C; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:900px; margin:0 auto; padding:0 16px 88px; }
+  header { padding:60px 0 32px; border-bottom:1px solid var(--line); margin-bottom:36px; }
+  h1 { font-size:clamp(1.7rem,5vw,2.4rem); line-height:1.16; margin:0 0 18px; letter-spacing:-.02em; }
+  .lede { font-size:clamp(1rem,2.3vw,1.1rem); color:var(--muted); margin:0 0 22px; max-width:62ch; }
+  .lede strong { color:var(--ink); }
+  .links a { display:inline-block; margin:0 9px 9px 0; padding:9px 15px; border:1px solid var(--line);
+    border-radius:7px; text-decoration:none; color:var(--ink); background:var(--surface); font-size:.9rem;
+    transition:border-color .15s; }
+  .links a:hover { border-color:var(--accent); }
+  h2 { font-size:1.3rem; margin:48px 0 8px; padding-top:12px; border-top:1px solid var(--line); letter-spacing:-.01em; }
+  figure { margin:22px 0; }
+  figure img { width:100%; height:auto; display:block; border:1px solid var(--line); border-radius:9px; background:#fff; }
+  figcaption { font-size:.85rem; color:var(--muted); margin-top:9px; max-width:70ch; }
+  p { margin:0 0 16px; max-width:70ch; }
+  code { background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:1px 5px; font-size:.86em;
+    font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+  footer { margin-top:60px; padding-top:22px; border-top:1px solid var(--line); font-size:.86rem; color:var(--muted); }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>E-commerce Recommender on 85 Million Real Events</h1>
+<p class="lede">A two-stage recommender (candidate generation, then a learning-to-rank model) trained and evaluated offline on two months of real clickstream from a multi-category online store. For 50,000 buyers in the last week of November, <strong>the LightGBM ranker reaches recall@20 of 0.395 against 0.244 for the best single generator</strong>, &quot;what the user recently viewed&quot;. The ceiling is set before ranking: <strong>71.4% of what people buy that week is an item they had never viewed before</strong>, and only 56.0% of bought items appear among any generator&#x27;s candidates.</p>
+<div class="links">
+<a href="https://github.com/Rxyxs/ecommerce-recommender-rees46">Code and method</a>
+<a href="https://github.com/Rxyxs/ecommerce-recommender-rees46#readme">Full README</a>
+</div></header>
+<p>This page shows the project's results. The methodology, the design decisions and the limitations are documented in the repository's README.</p>
+<h2>Results</h2>
+<figure>
+<img src="figures/methods.png" alt="recall@20 and NDCG@20 per method" loading="lazy">
+</figure>
+<figure>
+<img src="figures/importance.png" alt="Feature importance" loading="lazy">
+<figcaption>How many times the user viewed the item (32.2% of the gain) and how much it sold last week (14.3%) carry almost half the model. People buy what they looked at repeatedly and what is selling now. The ALS score, the most complex signal, carries 2.4%.</figcaption>
+</figure>
+<h2>The ceiling: most purchases are of items never seen before</h2>
+<figure>
+<img src="figures/candidate_recall.png" alt="Candidate recall per generator" loading="lazy">
+<figcaption>Candidate recall is the share of bought (user, item) pairs that appear anywhere among the candidates: no ranker over these candidates can recommend what is not there. All four generators together reach <strong>56.0%</strong>. The reason is the 71.4% above: most items bought in the test week had no view or purchase by that user before the list was made, so no history-based generator could propose them. Improving on that needs signals from the current session (what the user is viewing now), not a better model of the past.</figcaption>
+</figure>
+<footer>
+Pablo Reyes · <a href="https://github.com/Rxyxs/ecommerce-recommender-rees46">github.com/Rxyxs/ecommerce-recommender-rees46</a> · MIT<br><br>
+Every figure on this page is produced by the repository's pipeline. For the full method and its limitations, see the README.
+</footer>
+</div></body></html>
