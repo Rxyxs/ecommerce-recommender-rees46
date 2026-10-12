@@ -1,0 +1,12 @@
+duckdb
+polars
+pyarrow
+pandas
+numpy
+scipy
+implicit
+lightgbm
+scikit-learn
+matplotlib
+pytest
+kaggle
