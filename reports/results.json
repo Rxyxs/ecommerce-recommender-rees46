@@ -1,0 +1,89 @@
+{
+  "events": {
+    "events": 85290907,
+    "purchases": 1384137
+  },
+  "test_window": [
+    "2019-11-24",
+    "2019-11-30"
+  ],
+  "test_buyers": 105026,
+  "evaluated_users": 50000,
+  "bought_pairs_never_viewed_before": 0.7136,
+  "candidate_recall": {
+    "recent": 0.2526,
+    "coview": 0.2788,
+    "als": 0.2483,
+    "popular": 0.3418,
+    "union": 0.5605
+  },
+  "candidates_per_user": 152.2,
+  "methods": {
+    "recent": {
+      "users": 50000,
+      "recall@20": 0.2443,
+      "hit@20": 0.2928,
+      "ndcg@20": 0.174
+    },
+    "coview": {
+      "users": 50000,
+      "recall@20": 0.2074,
+      "hit@20": 0.2471,
+      "ndcg@20": 0.0961
+    },
+    "als": {
+      "users": 50000,
+      "recall@20": 0.202,
+      "hit@20": 0.243,
+      "ndcg@20": 0.1275
+    },
+    "popular": {
+      "users": 50000,
+      "recall@20": 0.2115,
+      "hit@20": 0.2549,
+      "ndcg@20": 0.1044
+    },
+    "ranker": {
+      "users": 50000,
+      "recall@20": 0.3949,
+      "hit@20": 0.453,
+      "ndcg@20": 0.2551
+    }
+  },
+  "cold_start": {
+    "share_of_buyers": 0.2699,
+    "popular": {
+      "users": 28343,
+      "recall@20": 0.2771,
+      "hit@20": 0.314,
+      "ndcg@20": 0.1455
+    }
+  },
+  "importance_gain_share": {
+    "ui_views": 0.3219,
+    "item_purchases_7d": 0.1429,
+    "rank_recent": 0.0791,
+    "ui_days_since_view": 0.0479,
+    "rank_coview": 0.0468,
+    "n_sources": 0.0412,
+    "item_views_7d": 0.0405,
+    "item_conversion_30d": 0.0389,
+    "item_price_vs_user": 0.0355,
+    "item_price": 0.0279,
+    "rank_popular": 0.0268,
+    "user_events_30d": 0.0256,
+    "als_score": 0.024,
+    "coview_score": 0.0196,
+    "rank_als": 0.0184,
+    "user_purchases": 0.0183,
+    "user_items_viewed": 0.0172,
+    "ui_bought_before": 0.0124,
+    "ui_views_7d": 0.0069,
+    "ui_in_last_session": 0.0049,
+    "same_main_category": 0.0032
+  },
+  "seconds": {
+    "valid": 185.0,
+    "test": 182.4
+  }
+}
